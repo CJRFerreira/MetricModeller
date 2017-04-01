@@ -27,3 +27,8 @@
 *.exe
 *.out
 *.app
+
+# Folders
+/MetricModeller/MetricModeller/bin
+/MetricModeller/MetricModeller/bin/Debug
+/MetricModeller/MetricModeller/obj
