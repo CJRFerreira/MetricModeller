@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.SizingGb = new System.Windows.Forms.GroupBox();
-            this.FinalCalculateBtn = new System.Windows.Forms.Button();
-            this.OutputRtb = new System.Windows.Forms.RichTextBox();
             this.LanguageCb = new System.Windows.Forms.ComboBox();
+            this.FinalCalculateBtn = new System.Windows.Forms.Button();
             this.LanguageLbl = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,11 +54,12 @@
             this.UserInputsTb = new System.Windows.Forms.TextBox();
             this.UserOutputsLbl = new System.Windows.Forms.Label();
             this.UserInputsLbl = new System.Windows.Forms.Label();
+            this.OutputRtb = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             this.SizingGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FileComplexityNud)).BeginInit();
@@ -104,6 +104,14 @@
             this.SizingGb.TabStop = false;
             this.SizingGb.Text = "Function Point";
             // 
+            // LanguageCb
+            // 
+            this.LanguageCb.FormattingEnabled = true;
+            this.LanguageCb.Location = new System.Drawing.Point(118, 274);
+            this.LanguageCb.Name = "LanguageCb";
+            this.LanguageCb.Size = new System.Drawing.Size(373, 21);
+            this.LanguageCb.TabIndex = 47;
+            // 
             // FinalCalculateBtn
             // 
             this.FinalCalculateBtn.Location = new System.Drawing.Point(478, 482);
@@ -112,22 +120,7 @@
             this.FinalCalculateBtn.TabIndex = 2;
             this.FinalCalculateBtn.Text = "Calculate";
             this.FinalCalculateBtn.UseVisualStyleBackColor = true;
-            // 
-            // OutputRtb
-            // 
-            this.OutputRtb.Location = new System.Drawing.Point(578, 230);
-            this.OutputRtb.Name = "OutputRtb";
-            this.OutputRtb.Size = new System.Drawing.Size(488, 294);
-            this.OutputRtb.TabIndex = 3;
-            this.OutputRtb.Text = "";
-            // 
-            // LanguageCb
-            // 
-            this.LanguageCb.FormattingEnabled = true;
-            this.LanguageCb.Location = new System.Drawing.Point(118, 274);
-            this.LanguageCb.Name = "LanguageCb";
-            this.LanguageCb.Size = new System.Drawing.Size(373, 21);
-            this.LanguageCb.TabIndex = 47;
+            this.FinalCalculateBtn.Click += new System.EventHandler(this.FinalCalculateBtn_Click);
             // 
             // LanguageLbl
             // 
@@ -175,6 +168,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 43;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label4
             // 
@@ -389,6 +383,14 @@
             this.UserInputsLbl.TabIndex = 24;
             this.UserInputsLbl.Text = "# of User Inputs:";
             // 
+            // OutputRtb
+            // 
+            this.OutputRtb.Location = new System.Drawing.Point(578, 230);
+            this.OutputRtb.Name = "OutputRtb";
+            this.OutputRtb.Size = new System.Drawing.Size(488, 294);
+            this.OutputRtb.TabIndex = 3;
+            this.OutputRtb.Text = "";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.comboBox1);
@@ -401,15 +403,29 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Individual Functions";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label5
+            // comboBox1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(163, 13);
-            this.label5.TabIndex = 48;
-            this.label5.Text = "Average Cost per Team Member:";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Beginner",
+            "Intermidiate",
+            "Expert"});
+            this.comboBox1.Location = new System.Drawing.Point(186, 65);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(295, 21);
+            this.comboBox1.TabIndex = 52;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 71);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(172, 13);
+            this.label6.TabIndex = 51;
+            this.label6.Text = "Average Team Member Skill Level:";
             // 
             // numericUpDown2
             // 
@@ -425,26 +441,14 @@
             this.numericUpDown2.TabIndex = 50;
             this.numericUpDown2.ThousandsSeparator = true;
             // 
-            // label6
+            // label5
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 71);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(172, 13);
-            this.label6.TabIndex = 51;
-            this.label6.Text = "Average Team Member Skill Level:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Beginner",
-            "Intermidiate",
-            "Expert"});
-            this.comboBox1.Location = new System.Drawing.Point(186, 65);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(295, 21);
-            this.comboBox1.TabIndex = 52;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 33);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(163, 13);
+            this.label5.TabIndex = 48;
+            this.label5.Text = "Average Cost per Team Member:";
             // 
             // MainForm
             // 
@@ -456,6 +460,7 @@
             this.Controls.Add(this.SizingGb);
             this.Name = "MainForm";
             this.Text = "Blue Raincoat - Metric Modeller";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.SizingGb.ResumeLayout(false);
             this.SizingGb.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
