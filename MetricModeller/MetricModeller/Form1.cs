@@ -29,18 +29,18 @@ namespace MetricModeller
         public List<string> ReadLanguage()
         {
             List<string> languageList = new List<string>();
-            using (var fs = File.OpenRead(@"language_prod.csv"))
+            using (var fs = File.OpenRead(Application.StartupPath  +@"\\language_prod.csv"))
             using (var reader = new StreamReader(fs))
             {
-            
-                
+
+
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
 
                     languageList.Add(values[0]);
-                    
+
                 }
             }
             return languageList;
@@ -49,7 +49,7 @@ namespace MetricModeller
         public List<string> ReadLevel()
         {
             List<string> levelList = new List<string>();
-            using (var fs = File.OpenRead(@"language_prod.csv"))
+            using (var fs = File.OpenRead(Path.Combine(Environment.CurrentDirectory, "@//language_prod.csv")))
             using (var reader = new StreamReader(fs))
             {
 
@@ -69,7 +69,7 @@ namespace MetricModeller
         public List<string> ReadStatmentsPerFP()
         {
             List<string> statmentsPerFPList = new List<string>();
-            using (var fs = File.OpenRead(@"language_prod.csv"))
+            using (var fs = File.OpenRead("*/language_prod.csv"))
             using (var reader = new StreamReader(fs))
             {
 
