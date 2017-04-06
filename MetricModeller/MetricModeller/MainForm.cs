@@ -90,7 +90,8 @@ namespace MetricModeller
                 {
                     projectHours = EstLOC / 250;
                 }
-                OutputRtb.Text += $"Estimated Project Hours: {Math.Round(projectHours * 24)}\n";
+                projectHours = projectHours * 24;
+                OutputRtb.Text += $"Estimated Project Hours: {Math.Round(projectHours)}\n";
 
                 decimal projectedCost = 0;
                 if (AverageTeamCostNud.Value > 0)
