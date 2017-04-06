@@ -33,7 +33,7 @@
             this.CodePerFPLbl = new System.Windows.Forms.Label();
             this.LangaugeLevelTb = new System.Windows.Forms.TextBox();
             this.LanguageLevelLbl = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CalculateFPBtn = new System.Windows.Forms.Button();
             this.LanguageCb = new System.Windows.Forms.ComboBox();
             this.FinalCalculateBtn = new System.Windows.Forms.Button();
             this.LanguageLbl = new System.Windows.Forms.Label();
@@ -61,12 +61,13 @@
             this.UserInputsLbl = new System.Windows.Forms.Label();
             this.OutputRtb = new System.Windows.Forms.RichTextBox();
             this.IndividualFuncGb = new System.Windows.Forms.GroupBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.AverageTeamSkillCB = new System.Windows.Forms.ComboBox();
             this.AverageTeamSkillLbl = new System.Windows.Forms.Label();
             this.AverageTeamCostNud = new System.Windows.Forms.NumericUpDown();
             this.AverageTeamCostLbl = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.SummaryLbl = new System.Windows.Forms.Label();
             this.SizingGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ApiComplexityNud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FileComplexityNud)).BeginInit();
@@ -74,8 +75,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.OutputComplexityNud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InputComplexityNud)).BeginInit();
             this.IndividualFuncGb.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AverageTeamCostNud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AverageTeamCostNud)).BeginInit();
             this.SuspendLayout();
             // 
             // SizingGb
@@ -84,7 +85,7 @@
             this.SizingGb.Controls.Add(this.CodePerFPLbl);
             this.SizingGb.Controls.Add(this.LangaugeLevelTb);
             this.SizingGb.Controls.Add(this.LanguageLevelLbl);
-            this.SizingGb.Controls.Add(this.button1);
+            this.SizingGb.Controls.Add(this.CalculateFPBtn);
             this.SizingGb.Controls.Add(this.LanguageCb);
             this.SizingGb.Controls.Add(this.FinalCalculateBtn);
             this.SizingGb.Controls.Add(this.LanguageLbl);
@@ -151,14 +152,15 @@
             this.LanguageLevelLbl.TabIndex = 49;
             this.LanguageLevelLbl.Text = "Language Level:";
             // 
-            // button1
+            // CalculateFPBtn
             // 
-            this.button1.Location = new System.Drawing.Point(380, 212);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 23);
-            this.button1.TabIndex = 48;
-            this.button1.Text = "Calculate Function Points";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CalculateFPBtn.Location = new System.Drawing.Point(380, 212);
+            this.CalculateFPBtn.Name = "CalculateFPBtn";
+            this.CalculateFPBtn.Size = new System.Drawing.Size(137, 23);
+            this.CalculateFPBtn.TabIndex = 48;
+            this.CalculateFPBtn.Text = "Calculate Function Points";
+            this.CalculateFPBtn.UseVisualStyleBackColor = true;
+            this.CalculateFPBtn.Click += new System.EventHandler(this.CalculateFPBtn_Click);
             // 
             // LanguageCb
             // 
@@ -443,9 +445,10 @@
             // 
             // OutputRtb
             // 
-            this.OutputRtb.Location = new System.Drawing.Point(578, 230);
+            this.OutputRtb.Location = new System.Drawing.Point(578, 254);
             this.OutputRtb.Name = "OutputRtb";
-            this.OutputRtb.Size = new System.Drawing.Size(488, 294);
+            this.OutputRtb.ReadOnly = true;
+            this.OutputRtb.Size = new System.Drawing.Size(488, 270);
             this.OutputRtb.TabIndex = 3;
             this.OutputRtb.Text = "";
             // 
@@ -463,6 +466,38 @@
             this.IndividualFuncGb.TabIndex = 4;
             this.IndividualFuncGb.TabStop = false;
             this.IndividualFuncGb.Text = "Individual Functions";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(186, 108);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(295, 20);
+            this.numericUpDown1.TabIndex = 54;
+            this.numericUpDown1.ThousandsSeparator = true;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 110);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 13);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "Amount of Team Members:";
             // 
             // AverageTeamSkillCB
             // 
@@ -509,43 +544,21 @@
             this.AverageTeamCostLbl.TabIndex = 48;
             this.AverageTeamCostLbl.Text = "Average Cost per Team Member:";
             // 
-            // label1
+            // SummaryLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 110);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 13);
-            this.label1.TabIndex = 53;
-            this.label1.Text = "Amount of Team Members:";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(186, 108);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            5000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(295, 20);
-            this.numericUpDown1.TabIndex = 54;
-            this.numericUpDown1.ThousandsSeparator = true;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.SummaryLbl.AutoSize = true;
+            this.SummaryLbl.Location = new System.Drawing.Point(579, 235);
+            this.SummaryLbl.Name = "SummaryLbl";
+            this.SummaryLbl.Size = new System.Drawing.Size(50, 13);
+            this.SummaryLbl.TabIndex = 5;
+            this.SummaryLbl.Text = "Summary";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 536);
+            this.Controls.Add(this.SummaryLbl);
             this.Controls.Add(this.IndividualFuncGb);
             this.Controls.Add(this.OutputRtb);
             this.Controls.Add(this.SizingGb);
@@ -561,9 +574,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.InputComplexityNud)).EndInit();
             this.IndividualFuncGb.ResumeLayout(false);
             this.IndividualFuncGb.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AverageTeamCostNud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AverageTeamCostNud)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -601,13 +615,14 @@
         private System.Windows.Forms.Label AverageTeamCostLbl;
         private System.Windows.Forms.ComboBox AverageTeamSkillCB;
         private System.Windows.Forms.Label AverageTeamSkillLbl;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CalculateFPBtn;
         private System.Windows.Forms.TextBox CodePerFPTb;
         private System.Windows.Forms.Label CodePerFPLbl;
         private System.Windows.Forms.TextBox LangaugeLevelTb;
         private System.Windows.Forms.Label LanguageLevelLbl;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label SummaryLbl;
     }
 }
 

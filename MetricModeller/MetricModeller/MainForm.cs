@@ -12,6 +12,10 @@ using MetricModeller.Types;
 
 namespace MetricModeller
 {
+    /// <summary>
+    /// For Individual Functions, implement checks for if the user inputted a value.
+    /// If so, use it; If not, ignore it and use a default.
+    /// </summary>
     public partial class MainForm : Form
     {
         public List<Language> Languages;
@@ -63,10 +67,15 @@ namespace MetricModeller
 
         private void LanguageCb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Language lang = Languages.Where(i => i.Name.Equals(LanguageCb.Text.ToString())).First();
+            Language currLang = Languages.Where(lang => lang.Name.Equals(LanguageCb.Text.ToString())).First();
 
-            LangaugeLevelTb.Text = lang.Level.ToString();
-            CodePerFPTb.Text = lang.LinesPerFP.ToString();
+            LangaugeLevelTb.Text = currLang.Level.ToString();
+            CodePerFPTb.Text = currLang.LinesPerFP.ToString();
+        }
+
+        private void CalculateFPBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
