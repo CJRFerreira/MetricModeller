@@ -100,7 +100,7 @@ namespace MetricModeller
                 }
                 else
                 {
-                    projectedCost = projectHours * 15;
+                    projectedCost = projectHours * 20;
                 }
                 OutputRtb.Text += $"Estimated Project Cost: {projectedCost:C}\n";
             }
