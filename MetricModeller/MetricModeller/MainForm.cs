@@ -13,8 +13,8 @@ using MetricModeller.Types;
 namespace MetricModeller
 {
     /// <summary>
-    /// For Individual Functions, implement checks for if the user inputted a value.
-    /// If so, use it; If not, ignore it and use a default.
+    /// For Individual Functions, implement checks for if the user inputted a value. If so, use it;
+    /// If not, ignore it and use a default.
     /// </summary>
     public partial class MainForm : Form
     {
@@ -63,6 +63,13 @@ namespace MetricModeller
 
         private void FinalCalculateBtn_Click(object sender, EventArgs e)
         {
+            if (!AdjustedFPTb.Text.Equals("") && !LanguageCb.Text.Equals(""))
+            {
+            }
+            else
+            {
+                OutputRtb.Text = "Please fully complete the form presented on the left!\n\nThis includes both the Function Point and Language requirements.";
+            }
         }
 
         private void LanguageCb_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,7 +82,35 @@ namespace MetricModeller
 
         private void CalculateFPBtn_Click(object sender, EventArgs e)
         {
+            int unadjustedFP = CalculateUserInputs() + CalculateUserOutputs() + CalculateUserInquires() + CalculateFiles() + CalculateInterfaces();
 
+            UnadjustedFPTb.Text = unadjustedFP.ToString();
+            AdjustedFPTb.Text = (unadjustedFP * 0.65).ToString();
+        }
+
+        private int CalculateUserInputs()
+        {
+            return int.Parse(UserInputsTb.Text) * (int)InputComplexityNud.Value;
+        }
+
+        private int CalculateUserOutputs()
+        {
+            return int.Parse(UserOutputsTb.Text) * (int)OutputComplexityNud.Value;
+        }
+
+        private int CalculateUserInquires()
+        {
+            return int.Parse(UserInquiresTb.Text) * (int)InquiryComplexityNud.Value;
+        }
+
+        private int CalculateFiles()
+        {
+            return int.Parse(FileTb.Text) * (int)FileComplexityNud.Value;
+        }
+
+        private int CalculateInterfaces()
+        {
+            return int.Parse(InterfaceTb.Text) * (int)ApiComplexityNud.Value;
         }
     }
 }

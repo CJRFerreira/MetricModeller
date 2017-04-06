@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.SizingGb = new System.Windows.Forms.GroupBox();
+            this.KnownAdujstedFPGb = new System.Windows.Forms.GroupBox();
+            this.AdjustedFPLbl = new System.Windows.Forms.Label();
+            this.AdjustedFPTb = new System.Windows.Forms.TextBox();
             this.CodePerFPTb = new System.Windows.Forms.TextBox();
             this.CodePerFPLbl = new System.Windows.Forms.Label();
             this.LangaugeLevelTb = new System.Windows.Forms.TextBox();
@@ -39,10 +42,10 @@
             this.LanguageLbl = new System.Windows.Forms.Label();
             this.ApiComplexityNud = new System.Windows.Forms.NumericUpDown();
             this.APIComplexityLbl = new System.Windows.Forms.Label();
-            this.ExternalApiTb = new System.Windows.Forms.TextBox();
+            this.InterfaceTb = new System.Windows.Forms.TextBox();
             this.ExternalAPILbl = new System.Windows.Forms.Label();
             this.FpTotalLbl = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.UnadjustedFPTb = new System.Windows.Forms.TextBox();
             this.FileComplexityNud = new System.Windows.Forms.NumericUpDown();
             this.FileComplexityLbl = new System.Windows.Forms.Label();
             this.FileTb = new System.Windows.Forms.TextBox();
@@ -68,7 +71,9 @@
             this.AverageTeamCostNud = new System.Windows.Forms.NumericUpDown();
             this.AverageTeamCostLbl = new System.Windows.Forms.Label();
             this.SummaryLbl = new System.Windows.Forms.Label();
+            this.LanguageGb = new System.Windows.Forms.GroupBox();
             this.SizingGb.SuspendLayout();
+            this.KnownAdujstedFPGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ApiComplexityNud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FileComplexityNud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InquiryComplexityNud)).BeginInit();
@@ -77,24 +82,19 @@
             this.IndividualFuncGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AverageTeamCostNud)).BeginInit();
+            this.LanguageGb.SuspendLayout();
             this.SuspendLayout();
             // 
             // SizingGb
             // 
-            this.SizingGb.Controls.Add(this.CodePerFPTb);
-            this.SizingGb.Controls.Add(this.CodePerFPLbl);
-            this.SizingGb.Controls.Add(this.LangaugeLevelTb);
-            this.SizingGb.Controls.Add(this.LanguageLevelLbl);
+            this.SizingGb.Controls.Add(this.KnownAdujstedFPGb);
             this.SizingGb.Controls.Add(this.CalculateFPBtn);
-            this.SizingGb.Controls.Add(this.LanguageCb);
-            this.SizingGb.Controls.Add(this.FinalCalculateBtn);
-            this.SizingGb.Controls.Add(this.LanguageLbl);
             this.SizingGb.Controls.Add(this.ApiComplexityNud);
             this.SizingGb.Controls.Add(this.APIComplexityLbl);
-            this.SizingGb.Controls.Add(this.ExternalApiTb);
+            this.SizingGb.Controls.Add(this.InterfaceTb);
             this.SizingGb.Controls.Add(this.ExternalAPILbl);
             this.SizingGb.Controls.Add(this.FpTotalLbl);
-            this.SizingGb.Controls.Add(this.textBox1);
+            this.SizingGb.Controls.Add(this.UnadjustedFPTb);
             this.SizingGb.Controls.Add(this.FileComplexityNud);
             this.SizingGb.Controls.Add(this.FileComplexityLbl);
             this.SizingGb.Controls.Add(this.FileTb);
@@ -113,14 +113,41 @@
             this.SizingGb.Controls.Add(this.UserInputsLbl);
             this.SizingGb.Location = new System.Drawing.Point(13, 13);
             this.SizingGb.Name = "SizingGb";
-            this.SizingGb.Size = new System.Drawing.Size(559, 511);
+            this.SizingGb.Size = new System.Drawing.Size(559, 323);
             this.SizingGb.TabIndex = 0;
             this.SizingGb.TabStop = false;
             this.SizingGb.Text = "Function Point";
             // 
+            // KnownAdujstedFPGb
+            // 
+            this.KnownAdujstedFPGb.Controls.Add(this.AdjustedFPLbl);
+            this.KnownAdujstedFPGb.Controls.Add(this.AdjustedFPTb);
+            this.KnownAdujstedFPGb.Location = new System.Drawing.Point(59, 241);
+            this.KnownAdujstedFPGb.Name = "KnownAdujstedFPGb";
+            this.KnownAdujstedFPGb.Size = new System.Drawing.Size(458, 73);
+            this.KnownAdujstedFPGb.TabIndex = 55;
+            this.KnownAdujstedFPGb.TabStop = false;
+            this.KnownAdujstedFPGb.Text = "Optional - If Known";
+            // 
+            // AdjustedFPLbl
+            // 
+            this.AdjustedFPLbl.AutoSize = true;
+            this.AdjustedFPLbl.Location = new System.Drawing.Point(6, 33);
+            this.AdjustedFPLbl.Name = "AdjustedFPLbl";
+            this.AdjustedFPLbl.Size = new System.Drawing.Size(149, 13);
+            this.AdjustedFPLbl.TabIndex = 54;
+            this.AdjustedFPLbl.Text = "# of Adjusted Function Points:";
+            // 
+            // AdjustedFPTb
+            // 
+            this.AdjustedFPTb.Location = new System.Drawing.Point(197, 30);
+            this.AdjustedFPTb.Name = "AdjustedFPTb";
+            this.AdjustedFPTb.Size = new System.Drawing.Size(109, 20);
+            this.AdjustedFPTb.TabIndex = 53;
+            // 
             // CodePerFPTb
             // 
-            this.CodePerFPTb.Location = new System.Drawing.Point(118, 327);
+            this.CodePerFPTb.Location = new System.Drawing.Point(118, 82);
             this.CodePerFPTb.Name = "CodePerFPTb";
             this.CodePerFPTb.ReadOnly = true;
             this.CodePerFPTb.Size = new System.Drawing.Size(100, 20);
@@ -129,7 +156,7 @@
             // CodePerFPLbl
             // 
             this.CodePerFPLbl.AutoSize = true;
-            this.CodePerFPLbl.Location = new System.Drawing.Point(17, 330);
+            this.CodePerFPLbl.Location = new System.Drawing.Point(17, 85);
             this.CodePerFPLbl.Name = "CodePerFPLbl";
             this.CodePerFPLbl.Size = new System.Drawing.Size(70, 13);
             this.CodePerFPLbl.TabIndex = 51;
@@ -137,7 +164,7 @@
             // 
             // LangaugeLevelTb
             // 
-            this.LangaugeLevelTb.Location = new System.Drawing.Point(118, 301);
+            this.LangaugeLevelTb.Location = new System.Drawing.Point(118, 56);
             this.LangaugeLevelTb.Name = "LangaugeLevelTb";
             this.LangaugeLevelTb.ReadOnly = true;
             this.LangaugeLevelTb.Size = new System.Drawing.Size(100, 20);
@@ -146,7 +173,7 @@
             // LanguageLevelLbl
             // 
             this.LanguageLevelLbl.AutoSize = true;
-            this.LanguageLevelLbl.Location = new System.Drawing.Point(17, 304);
+            this.LanguageLevelLbl.Location = new System.Drawing.Point(17, 59);
             this.LanguageLevelLbl.Name = "LanguageLevelLbl";
             this.LanguageLevelLbl.Size = new System.Drawing.Size(87, 13);
             this.LanguageLevelLbl.TabIndex = 49;
@@ -166,7 +193,7 @@
             // 
             this.LanguageCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LanguageCb.FormattingEnabled = true;
-            this.LanguageCb.Location = new System.Drawing.Point(118, 274);
+            this.LanguageCb.Location = new System.Drawing.Point(118, 29);
             this.LanguageCb.Name = "LanguageCb";
             this.LanguageCb.Size = new System.Drawing.Size(399, 21);
             this.LanguageCb.TabIndex = 47;
@@ -174,7 +201,7 @@
             // 
             // FinalCalculateBtn
             // 
-            this.FinalCalculateBtn.Location = new System.Drawing.Point(478, 482);
+            this.FinalCalculateBtn.Location = new System.Drawing.Point(406, 176);
             this.FinalCalculateBtn.Name = "FinalCalculateBtn";
             this.FinalCalculateBtn.Size = new System.Drawing.Size(75, 23);
             this.FinalCalculateBtn.TabIndex = 2;
@@ -185,7 +212,7 @@
             // LanguageLbl
             // 
             this.LanguageLbl.AutoSize = true;
-            this.LanguageLbl.Location = new System.Drawing.Point(18, 277);
+            this.LanguageLbl.Location = new System.Drawing.Point(18, 32);
             this.LanguageLbl.Name = "LanguageLbl";
             this.LanguageLbl.Size = new System.Drawing.Size(86, 13);
             this.LanguageLbl.TabIndex = 46;
@@ -218,42 +245,42 @@
             this.APIComplexityLbl.AutoSize = true;
             this.APIComplexityLbl.Location = new System.Drawing.Point(253, 181);
             this.APIComplexityLbl.Name = "APIComplexityLbl";
-            this.APIComplexityLbl.Size = new System.Drawing.Size(121, 13);
+            this.APIComplexityLbl.Size = new System.Drawing.Size(105, 13);
             this.APIComplexityLbl.TabIndex = 44;
-            this.APIComplexityLbl.Text = "External API Complexity:";
+            this.APIComplexityLbl.Text = "Interface Complexity:";
             // 
-            // ExternalApiTb
+            // InterfaceTb
             // 
-            this.ExternalApiTb.Location = new System.Drawing.Point(118, 178);
-            this.ExternalApiTb.Name = "ExternalApiTb";
-            this.ExternalApiTb.Size = new System.Drawing.Size(100, 20);
-            this.ExternalApiTb.TabIndex = 43;
+            this.InterfaceTb.Location = new System.Drawing.Point(118, 178);
+            this.InterfaceTb.Name = "InterfaceTb";
+            this.InterfaceTb.Size = new System.Drawing.Size(100, 20);
+            this.InterfaceTb.TabIndex = 43;
             // 
             // ExternalAPILbl
             // 
             this.ExternalAPILbl.AutoSize = true;
             this.ExternalAPILbl.Location = new System.Drawing.Point(18, 181);
             this.ExternalAPILbl.Name = "ExternalAPILbl";
-            this.ExternalAPILbl.Size = new System.Drawing.Size(95, 13);
+            this.ExternalAPILbl.Size = new System.Drawing.Size(79, 13);
             this.ExternalAPILbl.TabIndex = 42;
-            this.ExternalAPILbl.Text = "# of External APIs:";
+            this.ExternalAPILbl.Text = "# of Interfaces:";
             // 
             // FpTotalLbl
             // 
             this.FpTotalLbl.AutoSize = true;
-            this.FpTotalLbl.Location = new System.Drawing.Point(56, 217);
+            this.FpTotalLbl.Location = new System.Drawing.Point(65, 217);
             this.FpTotalLbl.Name = "FpTotalLbl";
             this.FpTotalLbl.Size = new System.Drawing.Size(162, 13);
             this.FpTotalLbl.TabIndex = 41;
             this.FpTotalLbl.Text = "# of Unadjusted Function Points:";
             // 
-            // textBox1
+            // UnadjustedFPTb
             // 
-            this.textBox1.Location = new System.Drawing.Point(256, 214);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(109, 20);
-            this.textBox1.TabIndex = 40;
+            this.UnadjustedFPTb.Location = new System.Drawing.Point(256, 214);
+            this.UnadjustedFPTb.Name = "UnadjustedFPTb";
+            this.UnadjustedFPTb.ReadOnly = true;
+            this.UnadjustedFPTb.Size = new System.Drawing.Size(109, 20);
+            this.UnadjustedFPTb.TabIndex = 40;
             // 
             // FileComplexityNud
             // 
@@ -448,7 +475,7 @@
             this.OutputRtb.Location = new System.Drawing.Point(578, 254);
             this.OutputRtb.Name = "OutputRtb";
             this.OutputRtb.ReadOnly = true;
-            this.OutputRtb.Size = new System.Drawing.Size(488, 270);
+            this.OutputRtb.Size = new System.Drawing.Size(488, 205);
             this.OutputRtb.TabIndex = 3;
             this.OutputRtb.Text = "";
             // 
@@ -460,6 +487,7 @@
             this.IndividualFuncGb.Controls.Add(this.AverageTeamSkillLbl);
             this.IndividualFuncGb.Controls.Add(this.AverageTeamCostNud);
             this.IndividualFuncGb.Controls.Add(this.AverageTeamCostLbl);
+            this.IndividualFuncGb.Controls.Add(this.FinalCalculateBtn);
             this.IndividualFuncGb.Location = new System.Drawing.Point(579, 13);
             this.IndividualFuncGb.Name = "IndividualFuncGb";
             this.IndividualFuncGb.Size = new System.Drawing.Size(487, 211);
@@ -505,7 +533,7 @@
             this.AverageTeamSkillCB.FormattingEnabled = true;
             this.AverageTeamSkillCB.Items.AddRange(new object[] {
             "Beginner",
-            "Intermidiate",
+            "Intermediate",
             "Expert"});
             this.AverageTeamSkillCB.Location = new System.Drawing.Point(186, 68);
             this.AverageTeamSkillCB.Name = "AverageTeamSkillCB";
@@ -553,11 +581,27 @@
             this.SummaryLbl.TabIndex = 5;
             this.SummaryLbl.Text = "Summary";
             // 
+            // LanguageGb
+            // 
+            this.LanguageGb.Controls.Add(this.LanguageLbl);
+            this.LanguageGb.Controls.Add(this.LanguageCb);
+            this.LanguageGb.Controls.Add(this.CodePerFPTb);
+            this.LanguageGb.Controls.Add(this.LanguageLevelLbl);
+            this.LanguageGb.Controls.Add(this.LangaugeLevelTb);
+            this.LanguageGb.Controls.Add(this.CodePerFPLbl);
+            this.LanguageGb.Location = new System.Drawing.Point(13, 343);
+            this.LanguageGb.Name = "LanguageGb";
+            this.LanguageGb.Size = new System.Drawing.Size(559, 116);
+            this.LanguageGb.TabIndex = 53;
+            this.LanguageGb.TabStop = false;
+            this.LanguageGb.Text = "Language";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1078, 536);
+            this.ClientSize = new System.Drawing.Size(1078, 470);
+            this.Controls.Add(this.LanguageGb);
             this.Controls.Add(this.SummaryLbl);
             this.Controls.Add(this.IndividualFuncGb);
             this.Controls.Add(this.OutputRtb);
@@ -567,6 +611,8 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.SizingGb.ResumeLayout(false);
             this.SizingGb.PerformLayout();
+            this.KnownAdujstedFPGb.ResumeLayout(false);
+            this.KnownAdujstedFPGb.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ApiComplexityNud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FileComplexityNud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InquiryComplexityNud)).EndInit();
@@ -576,6 +622,8 @@
             this.IndividualFuncGb.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AverageTeamCostNud)).EndInit();
+            this.LanguageGb.ResumeLayout(false);
+            this.LanguageGb.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -590,10 +638,10 @@
         private System.Windows.Forms.Label LanguageLbl;
         private System.Windows.Forms.NumericUpDown ApiComplexityNud;
         private System.Windows.Forms.Label APIComplexityLbl;
-        private System.Windows.Forms.TextBox ExternalApiTb;
+        private System.Windows.Forms.TextBox InterfaceTb;
         private System.Windows.Forms.Label ExternalAPILbl;
         private System.Windows.Forms.Label FpTotalLbl;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox UnadjustedFPTb;
         private System.Windows.Forms.NumericUpDown FileComplexityNud;
         private System.Windows.Forms.Label FileComplexityLbl;
         private System.Windows.Forms.TextBox FileTb;
@@ -623,6 +671,10 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label SummaryLbl;
+        private System.Windows.Forms.GroupBox KnownAdujstedFPGb;
+        private System.Windows.Forms.Label AdjustedFPLbl;
+        private System.Windows.Forms.TextBox AdjustedFPTb;
+        private System.Windows.Forms.GroupBox LanguageGb;
     }
 }
 
