@@ -1,3 +1,4 @@
+LANGUAGE,LEVEL,AVERAGE SOURCE STATEMENTS PER FUNCTION POINT
 1032/AF,20,16
 1st Generation default,1,320
 2nd Generation default,3,107
@@ -42,7 +43,7 @@ Ariel,3,107
 ARITY,6.5,49
 Arity PROLOG,5,64
 ART,6.5,49
-ART-IM,7,46
+0,7,46
 ART Enterprise,7,46
 Artemis,8,40
 AS/SET,17,19
@@ -486,3 +487,5 @@ YACC++,6,53
 ZBASIC,3.5,91
 ZIM,17,19
 ZLISP,5,64
+,,
+,,
