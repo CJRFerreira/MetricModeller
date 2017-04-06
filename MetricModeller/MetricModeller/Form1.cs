@@ -66,9 +66,9 @@ namespace MetricModeller
             return levelList;
         }
 
-        public List<string> ReadSPerFP()
+        public List<string> ReadStatmentsPerFP()
         {
-            List<string> sPerFPList = new List<string>();
+            List<string> statmentsPerFPList = new List<string>();
             using (var fs = File.OpenRead(@"language_prod.csv"))
             using (var reader = new StreamReader(fs))
             {
@@ -79,11 +79,24 @@ namespace MetricModeller
                     var line = reader.ReadLine();
                     var values = line.Split(',');
 
-                    sPerFPList.Add(values[2]);
+                    statmentsPerFPList.Add(values[2]);
 
                 }
             }
-            return sPerFPList;
+            return statmentsPerFPList;
+        }
+
+        public string[] ConvertLanguage()
+        {
+            ReadLanguage();
+            string[] language = new string[ReadLanguage().ToArray().Length-1];
+            for(int i=1;i<language.Length-1;i+=1)
+            {
+                language[i - 1] = ReadLanguage().ToArray()[i];
+            }
+            return language;
+               
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,7 +116,12 @@ namespace MetricModeller
 
         private void FinalCalculateBtn_Click(object sender, EventArgs e)
         {
-            textBox2.Text = ReadLevel().ToArray()[1].ToString();
+            textBox2.Text = ConvertLanguage()[487];
+        }
+
+        private void SizingGb_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

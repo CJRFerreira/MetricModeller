@@ -103,6 +103,7 @@
             this.SizingGb.TabIndex = 0;
             this.SizingGb.TabStop = false;
             this.SizingGb.Text = "Function Point";
+            this.SizingGb.Enter += new System.EventHandler(this.SizingGb_Enter);
             // 
             // LanguageCb
             // 
