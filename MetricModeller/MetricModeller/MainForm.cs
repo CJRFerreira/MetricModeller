@@ -63,8 +63,45 @@ namespace MetricModeller
 
         private void FinalCalculateBtn_Click(object sender, EventArgs e)
         {
+            OutputRtb.Text = "";
+
             if (!AdjustedFPTb.Text.Equals("") && !LanguageCb.Text.Equals(""))
             {
+                decimal EstLOC = decimal.Parse(CodePerFPTb.Text) * decimal.Parse(AdjustedFPTb.Text);
+                OutputRtb.Text += $"Estimated Lines of Code: {EstLOC}\n";
+
+                decimal projectHours = 0;
+                if (!AverageTeamSkillCB.Text.Equals(""))
+                {
+                    if (AverageTeamSkillCB.Text.Equals("Beginner"))
+                    {
+                        projectHours = EstLOC / 125;
+                    }
+                    else if (AverageTeamSkillCB.Text.Equals("Intermediate"))
+                    {
+                        projectHours = EstLOC / 250;
+                    }
+                    else if (AverageTeamSkillCB.Text.Equals("Expert"))
+                    {
+                        projectHours = EstLOC / 500;
+                    }
+                }
+                else
+                {
+                    projectHours = EstLOC / 250;
+                }
+                OutputRtb.Text += $"Estimated Project Hours: {Math.Round(projectHours * 24)}\n";
+
+                decimal projectedCost = 0;
+                if (AverageTeamCostNud.Value > 0)
+                {
+                    projectedCost = projectHours * AverageTeamCostNud.Value;
+                }
+                else
+                {
+                    projectedCost = projectHours * 15;
+                }
+                OutputRtb.Text += $"Estimated Project Cost: {projectedCost:C}\n";
             }
             else
             {
