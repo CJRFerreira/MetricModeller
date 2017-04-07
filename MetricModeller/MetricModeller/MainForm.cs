@@ -81,7 +81,20 @@ namespace MetricModeller
             {
                 decimal EstLOC = decimal.Parse(CodePerFPTb.Text) * decimal.Parse(AdjustedFPTb.Text);
                 OutputRtb.Text += $"Estimated Lines of Code: {EstLOC}\n";
-                double Effort = 2.4 * Math.Round(Math.Pow(Convert.ToDouble(EstLOC/1000),1.05));
+                double Effort=0;
+                if (AverageTeamSkillCB.Text.Equals("Beginner"))
+                {
+                    Effort = Math.Round((((2.4 * Math.Pow(Convert.ToDouble(EstLOC / 1000), 1.05)) * 100) / 1), 2);
+                }
+                else if (AverageTeamSkillCB.Text.Equals("Intermediate"))
+                {
+                   Effort = Math.Round((((2.4 * Math.Pow(Convert.ToDouble(EstLOC / 1000), 1.05)) * 100)/2), 2);
+                }
+                else if (AverageTeamSkillCB.Text.Equals("Expert"))
+                {
+                    Effort = Math.Round((((2.4 * Math.Pow(Convert.ToDouble(EstLOC / 3), 1.05)) * 100) / 2), 2);
+                }
+
                 decimal projectHours = 0;
                 if (!AverageTeamSkillCB.Text.Equals(""))
                 {
