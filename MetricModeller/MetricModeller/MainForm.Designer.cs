@@ -32,14 +32,7 @@
             this.KnownAdujstedFPGb = new System.Windows.Forms.GroupBox();
             this.AdjustedFPLbl = new System.Windows.Forms.Label();
             this.AdjustedFPTb = new System.Windows.Forms.TextBox();
-            this.CodePerFPTb = new System.Windows.Forms.TextBox();
-            this.CodePerFPLbl = new System.Windows.Forms.Label();
-            this.LangaugeLevelTb = new System.Windows.Forms.TextBox();
-            this.LanguageLevelLbl = new System.Windows.Forms.Label();
             this.CalculateFPBtn = new System.Windows.Forms.Button();
-            this.LanguageCb = new System.Windows.Forms.ComboBox();
-            this.FinalCalculateBtn = new System.Windows.Forms.Button();
-            this.LanguageLbl = new System.Windows.Forms.Label();
             this.ApiComplexityNud = new System.Windows.Forms.NumericUpDown();
             this.APIComplexityLbl = new System.Windows.Forms.Label();
             this.InterfaceTb = new System.Windows.Forms.TextBox();
@@ -62,6 +55,13 @@
             this.UserInputsTb = new System.Windows.Forms.TextBox();
             this.UserOutputsLbl = new System.Windows.Forms.Label();
             this.UserInputsLbl = new System.Windows.Forms.Label();
+            this.CodePerFPTb = new System.Windows.Forms.TextBox();
+            this.CodePerFPLbl = new System.Windows.Forms.Label();
+            this.LangaugeLevelTb = new System.Windows.Forms.TextBox();
+            this.LanguageLevelLbl = new System.Windows.Forms.Label();
+            this.LanguageCb = new System.Windows.Forms.ComboBox();
+            this.FinalCalculateBtn = new System.Windows.Forms.Button();
+            this.LanguageLbl = new System.Windows.Forms.Label();
             this.OutputRtb = new System.Windows.Forms.RichTextBox();
             this.IndividualFuncGb = new System.Windows.Forms.GroupBox();
             this.AverageTeamSkillCB = new System.Windows.Forms.ComboBox();
@@ -70,6 +70,8 @@
             this.AverageTeamCostLbl = new System.Windows.Forms.Label();
             this.SummaryLbl = new System.Windows.Forms.Label();
             this.LanguageGb = new System.Windows.Forms.GroupBox();
+            this.AmtTeamMembersNud = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.SizingGb.SuspendLayout();
             this.KnownAdujstedFPGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ApiComplexityNud)).BeginInit();
@@ -80,6 +82,7 @@
             this.IndividualFuncGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AverageTeamCostNud)).BeginInit();
             this.LanguageGb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AmtTeamMembersNud)).BeginInit();
             this.SuspendLayout();
             // 
             // SizingGb
@@ -142,40 +145,6 @@
             this.AdjustedFPTb.Size = new System.Drawing.Size(109, 20);
             this.AdjustedFPTb.TabIndex = 53;
             // 
-            // CodePerFPTb
-            // 
-            this.CodePerFPTb.Location = new System.Drawing.Point(118, 82);
-            this.CodePerFPTb.Name = "CodePerFPTb";
-            this.CodePerFPTb.ReadOnly = true;
-            this.CodePerFPTb.Size = new System.Drawing.Size(100, 20);
-            this.CodePerFPTb.TabIndex = 52;
-            // 
-            // CodePerFPLbl
-            // 
-            this.CodePerFPLbl.AutoSize = true;
-            this.CodePerFPLbl.Location = new System.Drawing.Point(17, 85);
-            this.CodePerFPLbl.Name = "CodePerFPLbl";
-            this.CodePerFPLbl.Size = new System.Drawing.Size(70, 13);
-            this.CodePerFPLbl.TabIndex = 51;
-            this.CodePerFPLbl.Text = "Code Per FP:";
-            // 
-            // LangaugeLevelTb
-            // 
-            this.LangaugeLevelTb.Location = new System.Drawing.Point(118, 56);
-            this.LangaugeLevelTb.Name = "LangaugeLevelTb";
-            this.LangaugeLevelTb.ReadOnly = true;
-            this.LangaugeLevelTb.Size = new System.Drawing.Size(100, 20);
-            this.LangaugeLevelTb.TabIndex = 50;
-            // 
-            // LanguageLevelLbl
-            // 
-            this.LanguageLevelLbl.AutoSize = true;
-            this.LanguageLevelLbl.Location = new System.Drawing.Point(17, 59);
-            this.LanguageLevelLbl.Name = "LanguageLevelLbl";
-            this.LanguageLevelLbl.Size = new System.Drawing.Size(87, 13);
-            this.LanguageLevelLbl.TabIndex = 49;
-            this.LanguageLevelLbl.Text = "Language Level:";
-            // 
             // CalculateFPBtn
             // 
             this.CalculateFPBtn.Location = new System.Drawing.Point(380, 212);
@@ -185,35 +154,6 @@
             this.CalculateFPBtn.Text = "Calculate Function Points";
             this.CalculateFPBtn.UseVisualStyleBackColor = true;
             this.CalculateFPBtn.Click += new System.EventHandler(this.CalculateFPBtn_Click);
-            // 
-            // LanguageCb
-            // 
-            this.LanguageCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.LanguageCb.FormattingEnabled = true;
-            this.LanguageCb.Location = new System.Drawing.Point(118, 29);
-            this.LanguageCb.Name = "LanguageCb";
-            this.LanguageCb.Size = new System.Drawing.Size(399, 21);
-            this.LanguageCb.TabIndex = 47;
-            this.LanguageCb.SelectedIndexChanged += new System.EventHandler(this.LanguageCb_SelectedIndexChanged);
-            // 
-            // FinalCalculateBtn
-            // 
-            this.FinalCalculateBtn.Location = new System.Drawing.Point(406, 176);
-            this.FinalCalculateBtn.Name = "FinalCalculateBtn";
-            this.FinalCalculateBtn.Size = new System.Drawing.Size(75, 23);
-            this.FinalCalculateBtn.TabIndex = 2;
-            this.FinalCalculateBtn.Text = "Calculate";
-            this.FinalCalculateBtn.UseVisualStyleBackColor = true;
-            this.FinalCalculateBtn.Click += new System.EventHandler(this.FinalCalculateBtn_Click);
-            // 
-            // LanguageLbl
-            // 
-            this.LanguageLbl.AutoSize = true;
-            this.LanguageLbl.Location = new System.Drawing.Point(18, 32);
-            this.LanguageLbl.Name = "LanguageLbl";
-            this.LanguageLbl.Size = new System.Drawing.Size(86, 13);
-            this.LanguageLbl.TabIndex = 46;
-            this.LanguageLbl.Text = "Language Used:";
             // 
             // ApiComplexityNud
             // 
@@ -467,6 +407,69 @@
             this.UserInputsLbl.TabIndex = 24;
             this.UserInputsLbl.Text = "# of User Inputs:";
             // 
+            // CodePerFPTb
+            // 
+            this.CodePerFPTb.Location = new System.Drawing.Point(118, 82);
+            this.CodePerFPTb.Name = "CodePerFPTb";
+            this.CodePerFPTb.ReadOnly = true;
+            this.CodePerFPTb.Size = new System.Drawing.Size(100, 20);
+            this.CodePerFPTb.TabIndex = 52;
+            // 
+            // CodePerFPLbl
+            // 
+            this.CodePerFPLbl.AutoSize = true;
+            this.CodePerFPLbl.Location = new System.Drawing.Point(17, 85);
+            this.CodePerFPLbl.Name = "CodePerFPLbl";
+            this.CodePerFPLbl.Size = new System.Drawing.Size(70, 13);
+            this.CodePerFPLbl.TabIndex = 51;
+            this.CodePerFPLbl.Text = "Code Per FP:";
+            // 
+            // LangaugeLevelTb
+            // 
+            this.LangaugeLevelTb.Location = new System.Drawing.Point(118, 56);
+            this.LangaugeLevelTb.Name = "LangaugeLevelTb";
+            this.LangaugeLevelTb.ReadOnly = true;
+            this.LangaugeLevelTb.Size = new System.Drawing.Size(100, 20);
+            this.LangaugeLevelTb.TabIndex = 50;
+            // 
+            // LanguageLevelLbl
+            // 
+            this.LanguageLevelLbl.AutoSize = true;
+            this.LanguageLevelLbl.Location = new System.Drawing.Point(17, 59);
+            this.LanguageLevelLbl.Name = "LanguageLevelLbl";
+            this.LanguageLevelLbl.Size = new System.Drawing.Size(87, 13);
+            this.LanguageLevelLbl.TabIndex = 49;
+            this.LanguageLevelLbl.Text = "Language Level:";
+            // 
+            // LanguageCb
+            // 
+            this.LanguageCb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LanguageCb.FormattingEnabled = true;
+            this.LanguageCb.Location = new System.Drawing.Point(118, 29);
+            this.LanguageCb.Name = "LanguageCb";
+            this.LanguageCb.Size = new System.Drawing.Size(399, 21);
+            this.LanguageCb.TabIndex = 47;
+            this.LanguageCb.SelectedIndexChanged += new System.EventHandler(this.LanguageCb_SelectedIndexChanged);
+            // 
+            // FinalCalculateBtn
+            // 
+            this.FinalCalculateBtn.Location = new System.Drawing.Point(406, 176);
+            this.FinalCalculateBtn.Name = "FinalCalculateBtn";
+            this.FinalCalculateBtn.Size = new System.Drawing.Size(75, 23);
+            this.FinalCalculateBtn.TabIndex = 2;
+            this.FinalCalculateBtn.Text = "Calculate";
+            this.FinalCalculateBtn.UseVisualStyleBackColor = true;
+            this.FinalCalculateBtn.Click += new System.EventHandler(this.FinalCalculateBtn_Click);
+            // 
+            // LanguageLbl
+            // 
+            this.LanguageLbl.AutoSize = true;
+            this.LanguageLbl.Location = new System.Drawing.Point(18, 32);
+            this.LanguageLbl.Name = "LanguageLbl";
+            this.LanguageLbl.Size = new System.Drawing.Size(86, 13);
+            this.LanguageLbl.TabIndex = 46;
+            this.LanguageLbl.Text = "Language Used:";
+            // 
             // OutputRtb
             // 
             this.OutputRtb.Location = new System.Drawing.Point(578, 254);
@@ -478,6 +481,8 @@
             // 
             // IndividualFuncGb
             // 
+            this.IndividualFuncGb.Controls.Add(this.AmtTeamMembersNud);
+            this.IndividualFuncGb.Controls.Add(this.label1);
             this.IndividualFuncGb.Controls.Add(this.AverageTeamSkillCB);
             this.IndividualFuncGb.Controls.Add(this.AverageTeamSkillLbl);
             this.IndividualFuncGb.Controls.Add(this.AverageTeamCostNud);
@@ -559,6 +564,38 @@
             this.LanguageGb.TabStop = false;
             this.LanguageGb.Text = "Language";
             // 
+            // AmtTeamMembersNud
+            // 
+            this.AmtTeamMembersNud.Location = new System.Drawing.Point(186, 104);
+            this.AmtTeamMembersNud.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.AmtTeamMembersNud.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.AmtTeamMembersNud.Name = "AmtTeamMembersNud";
+            this.AmtTeamMembersNud.Size = new System.Drawing.Size(295, 20);
+            this.AmtTeamMembersNud.TabIndex = 54;
+            this.AmtTeamMembersNud.ThousandsSeparator = true;
+            this.AmtTeamMembersNud.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 13);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "Amount of Team Members:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,6 +623,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AverageTeamCostNud)).EndInit();
             this.LanguageGb.ResumeLayout(false);
             this.LanguageGb.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AmtTeamMembersNud)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -635,6 +673,8 @@
         private System.Windows.Forms.Label AdjustedFPLbl;
         private System.Windows.Forms.TextBox AdjustedFPTb;
         private System.Windows.Forms.GroupBox LanguageGb;
+        private System.Windows.Forms.NumericUpDown AmtTeamMembersNud;
+        private System.Windows.Forms.Label label1;
     }
 }
 

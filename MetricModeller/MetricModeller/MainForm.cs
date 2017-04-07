@@ -96,11 +96,11 @@ namespace MetricModeller
                 decimal projectedCost = 0;
                 if (AverageTeamCostNud.Value > 0)
                 {
-                    projectedCost = projectHours * AverageTeamCostNud.Value;
+                    projectedCost = (projectHours * AverageTeamCostNud.Value) * AmtTeamMembersNud.Value;
                 }
                 else
                 {
-                    projectedCost = projectHours * 20;
+                    projectedCost = (projectHours * 20) * AmtTeamMembersNud.Value;
                 }
                 OutputRtb.Text += $"Estimated Project Cost: {projectedCost:C}\n";
             }
