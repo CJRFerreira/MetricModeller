@@ -43,23 +43,11 @@ namespace MetricModeller
             {
                 using (StreamReader reader = new StreamReader(Application.StartupPath + @"\\language_prod.csv"))
                 {
-                   
-                   
                     while (!reader.EndOfStream)
                     {
+                        splitLine = reader.ReadLine().Split(',');
 
-                        
-
-                      
-                            
-                            splitLine = reader.ReadLine().Split(',');
-
-                      
-                       
                         languages.Add(new Language(splitLine[0], (int)(double.Parse(splitLine[1])), (int)(double.Parse(splitLine[2]))));
-                        
-                 
-                        
                     }
 
                     reader.Close();
@@ -81,20 +69,23 @@ namespace MetricModeller
             {
                 decimal EstLOC = decimal.Parse(CodePerFPTb.Text) * decimal.Parse(AdjustedFPTb.Text);
                 OutputRtb.Text += $"Estimated Lines of Code: {EstLOC}\n";
-                double Effort=0;
+
+                double Effort = 0;
                 double Duration = 0;
+
                 if (AverageTeamSkillCB.Text.Equals("Beginner"))
                 {
-                    Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 1)/10000, 2);
+                    Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 1) / 10000, 2);
                 }
                 else if (AverageTeamSkillCB.Text.Equals("Intermediate"))
                 {
-                   Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100)/2)/10000, 2);
+                    Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 2) / 10000, 2);
                 }
                 else if (AverageTeamSkillCB.Text.Equals("Expert"))
                 {
-                    Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 3)/10000, 2);
+                    Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 3) / 10000, 2);
                 }
+
                 decimal projectHours = 0;
                 if (!AverageTeamSkillCB.Text.Equals(""))
                 {
@@ -128,8 +119,7 @@ namespace MetricModeller
                     projectedCost = (projectHours * 20) * AmtTeamMembersNud.Value;
                 }
                 OutputRtb.Text += $"Estimated Project Cost: {projectedCost:C}\n";
-                OutputRtb.Text += $"Average amount of work performed by a worker in one month:" + Effort.ToString()+"\n";
-                
+                OutputRtb.Text += $"Average amount of work performed by a worker in one month:" + Effort.ToString() + "\n";
             }
             else
             {
@@ -152,8 +142,6 @@ namespace MetricModeller
             UnadjustedFPTb.Text = unadjustedFP.ToString();
             AdjustedFPTb.Text = (unadjustedFP * 0.65).ToString();
         }
-
-
 
         private int CalculateUserInputs()
         {
