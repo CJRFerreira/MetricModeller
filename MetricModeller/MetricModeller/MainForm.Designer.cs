@@ -64,14 +64,15 @@
             this.LanguageLbl = new System.Windows.Forms.Label();
             this.OutputRtb = new System.Windows.Forms.RichTextBox();
             this.IndividualFuncGb = new System.Windows.Forms.GroupBox();
+            this.AmtTeamMembersNud = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.AverageTeamSkillCB = new System.Windows.Forms.ComboBox();
             this.AverageTeamSkillLbl = new System.Windows.Forms.Label();
             this.AverageTeamCostNud = new System.Windows.Forms.NumericUpDown();
             this.AverageTeamCostLbl = new System.Windows.Forms.Label();
             this.SummaryLbl = new System.Windows.Forms.Label();
             this.LanguageGb = new System.Windows.Forms.GroupBox();
-            this.AmtTeamMembersNud = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ErrorLbl = new System.Windows.Forms.Label();
             this.SizingGb.SuspendLayout();
             this.KnownAdujstedFPGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ApiComplexityNud)).BeginInit();
@@ -80,13 +81,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.OutputComplexityNud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InputComplexityNud)).BeginInit();
             this.IndividualFuncGb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AmtTeamMembersNud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AverageTeamCostNud)).BeginInit();
             this.LanguageGb.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AmtTeamMembersNud)).BeginInit();
             this.SuspendLayout();
             // 
             // SizingGb
             // 
+            this.SizingGb.Controls.Add(this.ErrorLbl);
             this.SizingGb.Controls.Add(this.KnownAdujstedFPGb);
             this.SizingGb.Controls.Add(this.CalculateFPBtn);
             this.SizingGb.Controls.Add(this.ApiComplexityNud);
@@ -495,6 +497,38 @@
             this.IndividualFuncGb.TabStop = false;
             this.IndividualFuncGb.Text = "Individual Functions";
             // 
+            // AmtTeamMembersNud
+            // 
+            this.AmtTeamMembersNud.Location = new System.Drawing.Point(186, 104);
+            this.AmtTeamMembersNud.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.AmtTeamMembersNud.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.AmtTeamMembersNud.Name = "AmtTeamMembersNud";
+            this.AmtTeamMembersNud.Size = new System.Drawing.Size(295, 20);
+            this.AmtTeamMembersNud.TabIndex = 54;
+            this.AmtTeamMembersNud.ThousandsSeparator = true;
+            this.AmtTeamMembersNud.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 13);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "Amount of Team Members:";
+            // 
             // AverageTeamSkillCB
             // 
             this.AverageTeamSkillCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -564,42 +598,20 @@
             this.LanguageGb.TabStop = false;
             this.LanguageGb.Text = "Language";
             // 
-            // AmtTeamMembersNud
+            // ErrorLbl
             // 
-            this.AmtTeamMembersNud.Location = new System.Drawing.Point(186, 104);
-            this.AmtTeamMembersNud.Maximum = new decimal(new int[] {
-            250,
-            0,
-            0,
-            0});
-            this.AmtTeamMembersNud.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.AmtTeamMembersNud.Name = "AmtTeamMembersNud";
-            this.AmtTeamMembersNud.Size = new System.Drawing.Size(295, 20);
-            this.AmtTeamMembersNud.TabIndex = 54;
-            this.AmtTeamMembersNud.ThousandsSeparator = true;
-            this.AmtTeamMembersNud.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 106);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 13);
-            this.label1.TabIndex = 53;
-            this.label1.Text = "Amount of Team Members:";
+            this.ErrorLbl.AutoSize = true;
+            this.ErrorLbl.ForeColor = System.Drawing.Color.Red;
+            this.ErrorLbl.Location = new System.Drawing.Point(253, 16);
+            this.ErrorLbl.Name = "ErrorLbl";
+            this.ErrorLbl.Size = new System.Drawing.Size(0, 13);
+            this.ErrorLbl.TabIndex = 56;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(1078, 470);
             this.Controls.Add(this.LanguageGb);
             this.Controls.Add(this.SummaryLbl);
@@ -620,10 +632,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.InputComplexityNud)).EndInit();
             this.IndividualFuncGb.ResumeLayout(false);
             this.IndividualFuncGb.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AmtTeamMembersNud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AverageTeamCostNud)).EndInit();
             this.LanguageGb.ResumeLayout(false);
             this.LanguageGb.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AmtTeamMembersNud)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -675,6 +687,7 @@
         private System.Windows.Forms.GroupBox LanguageGb;
         private System.Windows.Forms.NumericUpDown AmtTeamMembersNud;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ErrorLbl;
     }
 }
 

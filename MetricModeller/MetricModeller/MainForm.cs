@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using MetricModeller.Types;
+using System.Drawing.Drawing2D;
 
 namespace MetricModeller
 {
@@ -24,6 +25,7 @@ namespace MetricModeller
         {
             InitializeComponent();
             Languages = ReadLanguage();
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -31,6 +33,17 @@ namespace MetricModeller
             foreach (var lang in Languages)
             {
                 LanguageCb.Items.Add(lang);
+            }
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
+                                                                       Color.LightBlue,
+                                                                       Color.Purple,
+                                                                       90F))
+            {
+                e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }
         }
 
@@ -64,69 +77,112 @@ namespace MetricModeller
         private void FinalCalculateBtn_Click(object sender, EventArgs e)
         {
             OutputRtb.Text = "";
-
-            if (!AdjustedFPTb.Text.Equals("") && !LanguageCb.Text.Equals(""))
+            try
             {
-                decimal EstLOC = decimal.Parse(CodePerFPTb.Text) * decimal.Parse(AdjustedFPTb.Text);
-                OutputRtb.Text += $"Estimated Lines of Code: {EstLOC}\n";
+                ErrorLbl.Text = "";
+                if (!AdjustedFPTb.Text.Equals("") && !LanguageCb.Text.Equals(""))
+                {
+                    decimal EstLOC = decimal.Parse(CodePerFPTb.Text) * decimal.Parse(AdjustedFPTb.Text);
+                    OutputRtb.Text += $"Estimated Lines of Code: {EstLOC}\n";
 
-                double Effort = 0;
+                    double Effort = 0;
 
-                if (AverageTeamSkillCB.Text.Equals("Beginner"))
-                {
-                    Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 1) / 10000, 2);
-                }
-                else if (AverageTeamSkillCB.Text.Equals("Intermediate"))
-                {
-                    Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 2) / 10000, 2);
-                }
-                else if (AverageTeamSkillCB.Text.Equals("Expert"))
-                {
-                    Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 3) / 10000, 2);
-                }
-                else
-                {
-                    Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 2) / 10000, 2);
-                }
-
-                decimal projectHours = 0;
-                if (!AverageTeamSkillCB.Text.Equals(""))
-                {
                     if (AverageTeamSkillCB.Text.Equals("Beginner"))
                     {
-                        projectHours = EstLOC / 125;
+                        Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 1) / 10000, 2);
                     }
                     else if (AverageTeamSkillCB.Text.Equals("Intermediate"))
                     {
-                        projectHours = EstLOC / 250;
+                        Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 2) / 10000, 2);
                     }
                     else if (AverageTeamSkillCB.Text.Equals("Expert"))
                     {
-                        projectHours = EstLOC / 500;
+                        Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 3) / 10000, 2);
                     }
-                }
-                else
-                {
-                    projectHours = EstLOC / 250;
-                }
-                projectHours = projectHours * 24;
-                OutputRtb.Text += $"Estimated Project Hours: {Math.Round(projectHours)}\n";
+                    else
+                    {
+                        Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 2) / 10000, 2);
+                    }
 
-                decimal projectedCost = 0;
-                if (AverageTeamCostNud.Value > 0)
-                {
-                    projectedCost = (projectHours * AverageTeamCostNud.Value) * AmtTeamMembersNud.Value;
+                    decimal projectHours = 0;
+                    if (!AverageTeamSkillCB.Text.Equals(""))
+                    {
+                        if (AverageTeamSkillCB.Text.Equals("Beginner"))
+                        {
+                            projectHours = EstLOC / 125;
+                        }
+                        else if (AverageTeamSkillCB.Text.Equals("Intermediate"))
+                        {
+                            projectHours = EstLOC / 250;
+                        }
+                        else if (AverageTeamSkillCB.Text.Equals("Expert"))
+                        {
+                            projectHours = EstLOC / 500;
+                        }
+                    }
+                    else
+                    {
+                        projectHours = EstLOC / 250;
+                    }
+
+                    //Decide percetanges to take away or add to project hours based on the amount of people working on the project
+                    double estimatedTimeDifference;
+                    if (AmtTeamMembersNud.Value == 1)
+                    {
+                        estimatedTimeDifference = 1;
+                        projectHours *= (decimal)(estimatedTimeDifference);
+                    }
+                    else if (AmtTeamMembersNud.Value >= 2 && AmtTeamMembersNud.Value <= 3)
+                    {
+                        estimatedTimeDifference = 0.96;
+                        projectHours *= (decimal)(estimatedTimeDifference);
+                    }
+                    else if (AmtTeamMembersNud.Value >= 4 && AmtTeamMembersNud.Value <= 5)
+                    {
+                        estimatedTimeDifference = 0.84;
+                        projectHours *= (decimal)(estimatedTimeDifference);
+                    }
+                    else if(AmtTeamMembersNud.Value >= 6 && AmtTeamMembersNud.Value <= 8)
+                    {
+                        estimatedTimeDifference = 0.82;
+                        projectHours *= (decimal)(estimatedTimeDifference);
+                    }
+                    else if (AmtTeamMembersNud.Value >= 9 && AmtTeamMembersNud.Value <= 11)
+                    {
+                        estimatedTimeDifference = 1.21;
+                        projectHours *= (decimal)(estimatedTimeDifference);
+                    }
+                    else
+                    {
+                        estimatedTimeDifference = 1.20;
+                        projectHours *= (decimal)(estimatedTimeDifference);
+                    }
+                    /*----*/
+
+                    projectHours = projectHours * 24;
+                    OutputRtb.Text += $"Estimated Project Hours: {Math.Round(projectHours)}\n";
+
+                    decimal projectedCost = 0;
+                    if (AverageTeamCostNud.Value > 0)
+                    {
+                        projectedCost = (projectHours * AverageTeamCostNud.Value) * AmtTeamMembersNud.Value;
+                    }
+                    else
+                    {
+                        projectedCost = (projectHours * 20) * AmtTeamMembersNud.Value;
+                    }
+                    OutputRtb.Text += $"Estimated Project Cost: {projectedCost:C}\n";
+                    OutputRtb.Text += $"Effort Level (Performed by worker in one month): {Effort}\n";
                 }
                 else
                 {
-                    projectedCost = (projectHours * 20) * AmtTeamMembersNud.Value;
+                    OutputRtb.Text = "Please fully complete the form presented on the left!\n\nThis includes both the Function Point and Language requirements.";
+                    ErrorLbl.Text = "There are either empty or incorrect fields";
                 }
-                OutputRtb.Text += $"Estimated Project Cost: {projectedCost:C}\n";
-                OutputRtb.Text += $"Effort Level (Performed by worker in one month): {Effort}\n";
             }
-            else
+            catch (Exception)
             {
-                OutputRtb.Text = "Please fully complete the form presented on the left!\n\nThis includes both the Function Point and Language requirements.";
+                ErrorLbl.Text = "There are either empty or incorrect fields";
             }
         }
 
@@ -140,10 +196,18 @@ namespace MetricModeller
 
         private void CalculateFPBtn_Click(object sender, EventArgs e)
         {
-            int unadjustedFP = CalculateUserInputs() + CalculateUserOutputs() + CalculateUserInquires() + CalculateFiles() + CalculateInterfaces();
+            try
+            {
+                ErrorLbl.Text = "";
+                int unadjustedFP = CalculateUserInputs() + CalculateUserOutputs() + CalculateUserInquires() + CalculateFiles() + CalculateInterfaces();
 
-            UnadjustedFPTb.Text = unadjustedFP.ToString();
-            AdjustedFPTb.Text = (unadjustedFP * 0.65).ToString();
+                UnadjustedFPTb.Text = unadjustedFP.ToString();
+                AdjustedFPTb.Text = (unadjustedFP * 0.65).ToString();
+            }
+            catch(Exception)
+            {
+                ErrorLbl.Text = "There are either empty or incorrect fields";
+            }
         }
 
         private int CalculateUserInputs()
