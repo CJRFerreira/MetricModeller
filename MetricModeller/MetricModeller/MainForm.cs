@@ -38,7 +38,7 @@ namespace MetricModeller
         {
             List<Language> languages = new List<Language>();
             string[] splitLine;
-            int count = 0;
+
             try
             {
                 using (StreamReader reader = new StreamReader(Application.StartupPath + @"\\language_prod.csv"))
@@ -71,7 +71,6 @@ namespace MetricModeller
                 OutputRtb.Text += $"Estimated Lines of Code: {EstLOC}\n";
 
                 double Effort = 0;
-                double Duration = 0;
 
                 if (AverageTeamSkillCB.Text.Equals("Beginner"))
                 {
@@ -84,6 +83,10 @@ namespace MetricModeller
                 else if (AverageTeamSkillCB.Text.Equals("Expert"))
                 {
                     Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 3) / 10000, 2);
+                }
+                else
+                {
+                    Effort = Math.Round((((3.6 * Math.Pow(Convert.ToDouble(EstLOC), 1.20)) * 100) / 2) / 10000, 2);
                 }
 
                 decimal projectHours = 0;
@@ -119,7 +122,7 @@ namespace MetricModeller
                     projectedCost = (projectHours * 20) * AmtTeamMembersNud.Value;
                 }
                 OutputRtb.Text += $"Estimated Project Cost: {projectedCost:C}\n";
-                OutputRtb.Text += $"Average amount of work performed by a worker in one month:" + Effort.ToString() + "\n";
+                OutputRtb.Text += $"Effort Level (Performed by worker in one month): {Effort}\n";
             }
             else
             {
